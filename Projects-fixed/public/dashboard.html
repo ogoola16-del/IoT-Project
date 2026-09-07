@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale=1.0">
+    <title>Elaz Health and Envirnmental Management System</title>
+    <link rel = "stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- <img src="images/logo.png" alt="EcoMonitor Logo" class="logo"> -->
+    <nav class="navbar">
+        <!-- LEFT -->
+         <div class="logo">
+        <div class="logo-box">
+            E
+        </div>
+        <span class ="logo-name">Elaz</span>
+    </div>
+    <!-- CENTER -->
+     <ul class="nav-links">
+        <li>📊Overview</li>
+        <li class = "dropdown"><a href="#" id = "sensorBtn">❤️Sensors</a>
+        <ul class = "dropdown-menu" id = "sensorMenu">
+                <li><a href="#ecg">ECG</a></li>
+                <li><a href="#spo2">SpO₂</a></li>
+                <li><a href="#body-temp">Body Temperature</a></li>
+                <li><a href="#aq">Air quality</a></li>
+                <li><a href="#humidity/temperature">Humidity/Temperature</a></li>
+        </ul></li>
+
+        <li>
+         <button class = "button" id = "view-history-btn">📆 View History</button>
+         <input type ="date" id="history-date" style="display:none;">
+    </li>
+        <li><button class = "button" onclick="goLive()">🤖 Go Live</button></li>
+     </ul>
+     <!-- RIGHT -->
+      <div class="nav-right">
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="patientID" placeholder="Enter Patient ID">
+            <div id="patient-list" class="patient-list">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Patient ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody id="patient-table-body">
+
+        </tbody>
+
+    </table>
+
+</div>
+        </div>
+        <!-- <div class="status">
+            5/6 Online
+        </div> -->
+        <img src="01-images.png" alt="UIDS Logo" class="company-logo"></img>
+      </div>
+    </nav>
+
+    <!-- left time and right patient info -->
+    <div class="time_pat_info_containers">
+    <!-- current date -->
+    <div class="left_date-time-container">
+    <div class="date-time"><p id="datetime"></p></div>
+    <h2 id="greeting" class="greeting"></h2>
+    </div>
+  
+    <div class="right_pat_info_container">
+        <p id="patient-name">Patient Name:</p>
+        <p id="patient-age">Patient Age:</p>
+        <p id="patient-id">Patient ID:</p></div>
+    
+    </div>
+
+    <div class="remarks"><h1 class="remark"></h1></div>
+   <div class="waiting" id="ecg-data">Waiting...</div>
+    
+   <div class="history-controls">
+         <button id = "view-history-btn">View History</button>
+         <input type ="date" id="history-date" style="display:none;">
+
+        <button onclick="goLive()">Go Live</button>
+    </div>
+    
+    <!-- <div class="chart-card">
+        <div class ="chartclass">
+            <canvas id="ecgChart"></canvas>
+        </div>
+    <img src="normal-ecg.png" alt="Normal ECG" class="norm-ecg-image">
+    </div> -->
+
+
+    <div class="dashboard">
+
+
+    <!-- LEFT CARDS SIDE -->
+    <div class="sidebar">
+         <div class="info-card" id = "aq">
+            <h3 class = "air-quality">Air Quality (AQI)</h3>
+            <p id="aq-value">--</p>
+            <!-- <h4 class="aqsensorstatus">Sensor Status..................</h4>
+            <span id ="aqstatus"></span> -->
+        </div>
+
+        <div class="info-card">
+            <h3 class = "currentbpm">Heart Rate (BPM)</h3>
+            <p id="bpm-value">--</p>
+        </div>
+
+        <div class="info-card">
+            <h3 class="spo2-value">SpO₂</h3>
+            <p id="spo2-value">--</p>
+        </div>
+
+        <div class="info-card">
+            <h3 class="body-temp">Body Temp</h3>
+            <p id="temp-value">--</p>
+        </div>
+
+        <div class="info-card">
+            <h3 class="humidity">Humidity (%)</h3>
+            <p id="humidity-value">--</p>
+        </div>
+
+        <div class="info-card">
+            <h3 class="temperature">Temperature (°C)</h3>
+            <p id="roomtemp-value">--</p>
+        </div>
+       
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="graphs-section">
+
+        <!-- ECG -->
+        <div id = "ecg" class="chart-card">
+            <h3>ECG Signal</h3>
+
+            <div class="ecg-layout">
+                <canvas id="ecgChart"></canvas>
+
+                <div class = "ecg-reference">
+                <img
+                    src="normal-ecg.png"
+                    alt="Normal ECG"
+                    class="norm-ecg-image"
+                >
+                    <p class="ecg-image-caption">
+                        Reference Image(Normal Sinus Rhythm)
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- SPO2 -->
+        <div id = "spo2" class="chart-card">
+            <h3>Blood Oxygen (SpO₂)</h3>
+            <canvas id="spo2Chart"></canvas>
+        </div>
+
+        <!-- BODY TEMP -->
+        <div id = "body-temp" class="chart-card">
+            <h3>Body Temperature</h3>
+            <canvas id="tempChart"></canvas>
+        </div>
+
+        <!-- HUMIDITY + TEMP -->
+        <div id = "humidity/temperature" class="chart-card">
+            <h3>Environmental Conditions</h3>
+            <canvas id="envChart"></canvas>
+        </div>
+
+    </div>
+
+    
+</div>
+<footer class="footer">
+    <div>
+        
+        <p>© 2026 All rights reserved | Powered by University of Ibadan Design Studio.</p>
+
+    </div>
+</footer>
+<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+<script src="js1/scriptt.js"></script>
+</body>
+</html>
