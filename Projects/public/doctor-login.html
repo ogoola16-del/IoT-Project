@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Doctor Login | ELAZ Health and Environment</title>
+
+    <link
+        rel="stylesheet"
+        href="doctor-login.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main class="page-container">
+
+        <div class="login-card">
+
+
+            <!-- =========================
+                 HEADER
+            ========================= -->
+
+            <header class="header">
+
+                <div class="brand">
+
+                    <img
+                        src="01-images.png"
+                        alt="ELAZ Logo"
+                        class="logo"
+                    >
+
+                    <div class="brand-name">
+
+                        <span>ELAZ</span>
+
+                        <small>
+                            HEALTH AND ENVIRONMENT
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 LOGIN CONTENT
+            ========================= -->
+
+            <section
+                id="login-content"
+                class="content"
+            >
+
+                <h1>Doctor Login</h1>
+
+                <p class="welcome-message">
+
+                    Welcome back to ELAZ Health and Environment.
+                    Sign in to access your healthcare dashboard
+                    and continue providing data-driven care.
+
+                </p>
+
+
+                <!-- =========================
+                     LOGIN FORM
+                ========================= -->
+
+                <form id="doctor-login-form">
+
+
+                    <!-- DOCTOR ID -->
+
+                    <div class="form-group">
+
+                        <label for="doctor_id">
+                            Doctor ID
+                        </label>
+
+                        <input
+                            type="text"
+                            id="doctor_id"
+                            placeholder="e.g. DOCE0001"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- ERROR -->
+
+                    <p
+                        id="error-message"
+                        class="error-message"
+                    ></p>
+
+
+                    <!-- LOGIN -->
+
+                    <button
+                        type="submit"
+                        id="login-button"
+                    >
+                        Login
+                    </button>
+
+                </form>
+
+
+                <!-- =========================
+                     SIGNUP
+                ========================= -->
+
+                <div class="signup-section">
+
+                    <span>
+                        Don't have a doctor account?
+                    </span>
+
+                    <a href="doctor-signup.html">
+                        Sign Up
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 SUCCESS / LOGIN STATUS
+            ========================= -->
+
+            <section
+                id="login-success"
+                class="login-success"
+            >
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+                <h2>
+                    Login Successful
+                </h2>
+
+                <p>
+                    Welcome back,
+                    <strong id="doctor-name"></strong>.
+                </p>
+
+                <p class="redirect-message">
+                    Redirecting to your dashboard...
+                </p>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <script src="doctor-login.js"></script>
+
+</body>
+
+</html>
