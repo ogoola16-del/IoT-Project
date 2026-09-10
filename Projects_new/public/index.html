@@ -1818,8 +1818,27 @@
             sessionStorage.removeItem('patientName');
             sessionStorage.removeItem('patientAge');
             sessionStorage.removeItem('patientGender');
+
+            // Reset Doctor Login to a fresh state
+            const loginForm = document.getElementById('doctor-login-form');
+            if (loginForm) loginForm.reset();
+            const loginError = document.getElementById('login-error');
+            if (loginError) loginError.textContent = '';
+            const loginBtn = document.getElementById('login-button');
+            if (loginBtn) {
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Login';
+            }
+            const loginContent = document.getElementById('doctor-login-content');
+            if (loginContent) loginContent.style.display = 'block';
+            const loginSuccess = document.getElementById('doctor-login-success');
+            if (loginSuccess) loginSuccess.style.display = 'none';
+            const doctorNameDisplay = document.getElementById('doctor-name-display');
+            if (doctorNameDisplay) doctorNameDisplay.textContent = '';
+
             updateNavForAuth();
-            switchPage('page-overview');
+            // Open Login page as active (fresh login)
+            switchPage('page-doctor-login');
         }
 
         function switchPage(pageId) {
