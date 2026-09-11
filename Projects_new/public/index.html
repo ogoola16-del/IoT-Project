@@ -1197,7 +1197,7 @@
     position: fixed;
     top: 0;
     left: -280px;
-    width: 280px;
+    width: 230px;
     height: 100vh;
     background: #0B1F3A ;
     z-index: 1000;
@@ -1272,12 +1272,12 @@
         <button class="sidebar-close" onclick="toggleSidebar()">×</button>
         <ul class="nav-links">
             <li class="active" data-page="page-overview" onclick = "toggleSidebar()">🪟 Overview</li>
-            <li class="nav-auth-only" data-page="page-org-signup">🏢 Org Signup</li>
-            <li class="nav-auth-only" data-page="page-doctor-signup">✍️ Doctor Signup</li>
-            <li class="nav-auth-only" data-page="page-doctor-login">👨‍⚕️ Doctor Login</li>
-            <li data-page="page-patient">📋 Register/Load Patient</li>
-            <li data-page="page-dashboard">📊 Dashboard</li>
-            <li data-page="page-developers">👥 About Developers</li>
+            <li class="nav-auth-only" data-page="page-org-signup" onclick = "toggleSidebar()">🏢 Org Signup</li>
+            <li class="nav-auth-only" data-page="page-doctor-signup" onclick = "toggleSidebar()">✍️ Doctor Signup</li>
+            <li class="nav-auth-only" data-page="page-doctor-login" onclick = "toggleSidebar()">👨‍⚕️ Doctor Login</li>
+            <li data-page="page-patient" onclick = "toggleSidebar()">📋 Register/Load Patient</li>
+            <li data-page="page-dashboard" onclick = "toggleSidebar()">📊 Dashboard</li>
+            <li data-page="page-developers" onclick = "toggleSidebar()">👥 About Developers</li>
         </ul>
         </aside>
 
