@@ -806,6 +806,13 @@
         }
 
         @media (max-width: 480px) {
+            .sidebar {
+                gap: 2px;
+            }
+            
+            .sidebar .nav-links li {
+                padding: 8px 8px;
+            }
             .app-nav {
                 flex-wrap: wrap;
                 align-items: center;
@@ -837,13 +844,7 @@
             .dash-search-wrap input {
                 width: 160px;
             }
-            .sidebar {
-                gap: 2px;
-            }
-            
-            .sidebar .nav-links li {
-                padding: 8px 8px;
-            }
+
         }
 
         /* ============================================================
@@ -1268,12 +1269,6 @@
     background: transparent;
     font-size: 30px;
     cursor: pointer;
-}
-        @media (max-width: 480px) {
-    .sidebar {
-        width: 100% !important;
-        background: red !important;
-    }
 }
     </style>
 </head>
